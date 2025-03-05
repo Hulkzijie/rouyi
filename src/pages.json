@@ -56,13 +56,15 @@
       "path": "pages/about/about",
       "type": "page",
       "style": {
-        "navigationBarTitleText": "关于"
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的"
       }
     },
     {
       "path": "pages/login/index",
       "type": "page",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "登录"
       }
     },
@@ -70,6 +72,7 @@
       "path": "pages/work/work",
       "type": "page",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "工作台"
       }
     }
