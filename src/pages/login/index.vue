@@ -1,21 +1,19 @@
-
 <route lang="json5">
     {
       style: {
-        navigationBarTitleText: '工作台',
+        navigationBarTitleText: '登录',
       },
     }
     </route>
 <template>
     <view>
-      work
+        登录
     </view>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 </script>
-
 <style lang="scss" scoped>
 //
 </style>

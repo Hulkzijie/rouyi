@@ -3,7 +3,7 @@ import { defineUniPages } from '@uni-helper/vite-plugin-uni-pages'
 export default defineUniPages({
   globalStyle: {
     navigationStyle: 'default',
-    navigationBarTitleText: 'unibest',
+    navigationBarTitleText: 'ruoyi',
     navigationBarBackgroundColor: '#f8f8f8',
     navigationBarTextStyle: 'black',
     backgroundColor: '#FFFFFF',
@@ -18,7 +18,7 @@ export default defineUniPages({
   },
   tabBar: {
     color: '#999999',
-    selectedColor: '#018d71',
+    selectedColor: '#3a4171',
     backgroundColor: '#F8F8F8',
     borderStyle: 'black',
     height: '50px',
@@ -33,11 +33,17 @@ export default defineUniPages({
         text: '首页',
       },
       {
-        iconPath: 'static/tabbar/example.png',
-        selectedIconPath: 'static/tabbar/exampleHL.png',
-        pagePath: 'pages/about/about',
-        text: '关于',
+        iconPath: 'static/tabbar/work.png',
+        selectedIconPath: 'static/tabbar/workHL.png',
+        pagePath: 'pages/work/work',
+        text: '工作台',
       },
+      {
+        iconPath: 'static/tabbar/personal.png',
+        selectedIconPath: 'static/tabbar/personalHL.png',
+        pagePath: 'pages/about/about',
+        text: '我的',
+      }
     ],
   },
 })
