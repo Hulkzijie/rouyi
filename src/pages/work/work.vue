@@ -8,21 +8,15 @@
     }
     </route>
 <template>
-    <view>
-      <wd-navbar title="工作台"></wd-navbar>
-      <!-- <uni-nav-bar
-    title="自定义导航栏"
-    left-icon="left"
-    @clickLeft="goBack"
-    class="fixed w-full"
-    :border="false"
-    :status-bar="true"
-  ></uni-nav-bar> -->
-  <view class="h-11" :style="{ paddingTop: safeAreaInsets?.top + 'px' }"></view>
-  <view>
-    <!-- <fly-content :line="20" /> -->
-  </view>
-    </view>
+  <wd-navbar
+    fixed
+    custom-style="background-color: #AA001E !important;color:#FFFFFF"
+    safeAreaInsetTop
+  >
+    <template #title>
+      <wd-text text="全部服务" color="#FFFFFF"></wd-text>
+    </template>
+  </wd-navbar>
 </template>
 
 <script setup lang="ts">

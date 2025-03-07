@@ -1,23 +1,7 @@
 {
-  "name": "unibest",
+  "name": "今世缘APP",
   "type": "commonjs",
-  "version": "2.6.1",
-  "description": "unibest - 最好的 uniapp 开发模板",
-  "author": {
-    "name": "feige996",
-    "zhName": "菲鸽",
-    "email": "1020103647@qq.com",
-    "github": "https://github.com/feige996",
-    "gitee": "https://gitee.com/feige996"
-  },
-  "license": "MIT",
-  "repository": "https://github.com/feige996/unibest",
-  "repository-gitee": "https://gitee.com/feige996/unibest",
-  "repository-deprecated": "https://github.com/codercup/unibest",
-  "bugs": {
-    "url": "https://github.com/feige996/unibest/issues"
-  },
-  "homepage": "https://feige996.github.io/unibest/",
+  "version": "1.1.0",
   "engines": {
     "node": ">=18",
     "pnpm": ">=7.30"
@@ -91,6 +75,7 @@
     "bin-wrapper": "npm:bin-wrapper-china"
   },
   "dependencies": {
+    "@climblee/uv-ui": "^1.1.20",
     "@dcloudio/uni-app": "3.0.0-4020920240930001",
     "@dcloudio/uni-app-harmony": "3.0.0-4020920240930001",
     "@dcloudio/uni-app-plus": "3.0.0-4020920240930001",
@@ -106,6 +91,7 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4020920240930001",
     "@dcloudio/uni-mp-xhs": "3.0.0-4020920240930001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4020920240930001",
+    "@dcloudio/uni-ui": "^1.5.7",
     "@tanstack/vue-query": "^5.62.16",
     "abortcontroller-polyfill": "^1.7.8",
     "dayjs": "1.11.10",

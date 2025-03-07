@@ -8,7 +8,6 @@
 </route>
 
 <template>
-   <wd-navbar title="我的"></wd-navbar>
   <view
     class="bg-white overflow-hidden pt-2 px-4"
     :style="{ marginTop: safeAreaInsets?.top + 'px' }"
