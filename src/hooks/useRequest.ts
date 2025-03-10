@@ -1,5 +1,6 @@
 import { UnwrapRef } from 'vue'
-
+import NProgress from 'nprogress'
+NProgress.configure({ showSpinner: false })
 type IUseRequestOptions<T> = {
   /** 是否立即执行 */
   immediate?: boolean
@@ -20,10 +21,13 @@ export default function useRequest<T>(
   options: IUseRequestOptions<T> = { immediate: false },
 ) {
   const loading = ref(false)
+
   const error = ref(false)
   const data = ref<T>(options.initialData)
   const run = async () => {
     loading.value = true
+      // 需要先导入 NProgress
+    NProgress.start()
     return func()
       .then((res) => {
         data.value = res.data as UnwrapRef<T>
@@ -36,6 +40,8 @@ export default function useRequest<T>(
       })
       .finally(() => {
         loading.value = false
+          // 需要先导入 NProgress
+          NProgress.done()
       })
   }
 

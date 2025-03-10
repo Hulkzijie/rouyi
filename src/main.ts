@@ -2,11 +2,11 @@ import '@/style/index.scss'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import 'virtual:uno.css'
 import { createSSRApp } from 'vue'
-
+import 'nprogress/nprogress.css'
 import App from './App.vue'
 import { prototypeInterceptor, requestInterceptor, routeInterceptor } from './interceptors'
 import store from './store'
-
+//css
 export function createApp() {
   const app = createSSRApp(App)
   app.use(store)
@@ -14,7 +14,6 @@ export function createApp() {
   app.use(requestInterceptor)
   app.use(prototypeInterceptor)
   app.use(VueQueryPlugin)
-
   return {
     app,
   }

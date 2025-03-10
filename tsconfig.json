@@ -28,6 +28,8 @@
     ]
   },
   "vueCompilerOptions": {
+    "target": 3,
+    "nativeTags": ["block", "template", "component", "slot"],
     "plugins": ["@uni-helper/uni-types/volar-plugin"]
   },
   "exclude": ["node_modules"],

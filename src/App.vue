@@ -56,4 +56,8 @@ image {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+// 修改进度条颜色 
+#nprogress .bar {
+  background: #AA001E;
+}
 </style>
