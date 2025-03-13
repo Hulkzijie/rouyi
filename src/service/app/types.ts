@@ -1,6 +1,8 @@
 /* eslint-disable */
 // @ts-ignore
 
+import { number } from "@climblee/uv-ui/libs/function/test.js";
+
 export type ApiResponse = {
   code?: number;
   type?: string;
@@ -126,3 +128,27 @@ export type User = {
   /** User Status */
   userStatus?: number;
 };
+
+export type LoginParams = {
+  username: string;
+  password: string;
+  uuid?: string;
+  code?:string;
+};
+
+export type LoginResponse = {
+  code?: number;
+  type?: string;
+  message?: string;
+};
+export type captcha = {
+  captchaEnabled:boolean;
+  img?:string;
+  uuid?:string;
+}
+export type captchaImageResponse ={
+  code?:number;
+  data:captcha;
+  msg:string;
+
+}

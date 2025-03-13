@@ -89,6 +89,9 @@ importers:
       vue-i18n:
         specifier: 9.1.9
         version: 9.1.9(vue@3.4.21(typescript@5.7.2))
+      vue-router:
+        specifier: 4.5.0
+        version: 4.5.0(vue@3.4.21(typescript@5.7.2))
       wot-design-uni:
         specifier: ^1.4.0
         version: 1.4.0(vue@3.4.21(typescript@5.7.2))

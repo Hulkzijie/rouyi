@@ -14,7 +14,7 @@
       safeAreaInsetTop
     >
       <template #left>
-        <wd-icon name="arrow-left" size="18px"></wd-icon>
+        <wd-icon name="arrow-left" size="18px" @click="goBackHome"></wd-icon>
       </template>
     </wd-navbar>
         使用用车
@@ -22,7 +22,13 @@
 </template>
 
 <script lang="ts" setup>
-
+ const goBackHome = () => {
+    uni.navigateBack(
+      {
+        delta: 1,
+      }
+    )
+  } 
 </script>
 <style lang="scss" scoped>
 //

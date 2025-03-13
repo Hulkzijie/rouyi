@@ -23,6 +23,8 @@ interface ImportMetaEnv {
   readonly VITE_UPLOAD_BASEURL: string
   /** 是否清除console */
   readonly VITE_DELETE_CONSOLE: string
+  /** 路由模式 hash 或 html5*/
+  readonly VITE_ROUTER_HISTORY:'hash' | 'html5' 
   // 更多环境变量...
 }
 
