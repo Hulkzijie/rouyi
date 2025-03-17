@@ -13,6 +13,9 @@
       custom-style="background-color: #AA001E !important;color:#FFFFFF"
       safeAreaInsetTop
     >
+    <template #title>
+        <wd-text text="使用用车" color="#FFFFFF" size="16px"></wd-text>
+      </template>
       <template #left>
         <wd-icon name="arrow-left" size="18px" @click="goBackHome"></wd-icon>
       </template>

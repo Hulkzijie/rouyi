@@ -233,6 +233,9 @@ getCode()
       .text-blue {
         color: #AA001E;
       }
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
     }
   }
 }

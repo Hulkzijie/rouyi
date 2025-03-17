@@ -24,7 +24,7 @@ export const useUserStore = defineStore(
     const roles = ref<string[]>([]);
     const permissions = ref([]);
     const user = ref();
-    const routerMap = ref([])
+    const routerMap = ref([]);
     // Getters
     const isLoggedIn = computed(() => Boolean(token.value));
     // Actions
@@ -43,7 +43,9 @@ export const useUserStore = defineStore(
     const getAppRouters = async () =>{
      const res = await getRouters()
      console.log("getRouters",res)
-     routerMap.value = deepTransformMenuData(res.data)
+     routerMap.value = res.data
+    //  routerMap.value = deepTransformMenuData(res.data)
+     console.log("routerMap",routerMap.value )
 
       
     }
@@ -108,7 +110,9 @@ export const useUserStore = defineStore(
       setUserInfo,
       logout,
       loginSuccess,
-      getUserInfo
+      getUserInfo,
+      getAppRouters,
+      routerMap
     };
   },
   {

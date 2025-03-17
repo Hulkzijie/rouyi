@@ -46,8 +46,8 @@
           class="woker-list-item"
         >
           <view>
-            <!-- <text class="woker-list__name">{{ item.name }}</text>
-            <text class="woker-list__number">{{ item.number }}</text> -->
+          <text class="woker-list__name">{{ item.name }}</text>
+            <text class="woker-list__number">{{ item.number }}</text>         
           </view>
 
           <text v-if="index == 0" class="decollator">/</text>
@@ -63,24 +63,24 @@
             @click="handleMessageCenter"
           >
             <view class="menu-item-box">
-              <!-- <view class="iconfont icon-community menu-icon"></view> -->
-              <!-- <u--image
+              <view class="iconfont icon-my"></view>
+              <wd-img
                 class="menuListIcon"
-                :src="globalConfig.iconImgPrefix + 'xiaoxizhongxin.png'"
-              ></u--image> -->
+                :src="xiaoxizhongxin"
+              ></wd-img>
               <view class="menuTitle">消息中心</view>
             </view>
-            <!-- <u-badge type="error" max="99" :value="unreadNum"></u-badge> -->
+             <wd-badge :modelValue="unreadNum" type="primary"></wd-badge> 
           </view>
-          <!-- <view class="list-cell list-cell-arrow" @click="handleToAddressBook">
+          <view class="list-cell list-cell-arrow">
 						<view class="menu-item-box">
-							<u--image class="menuListIcon" :src="globalConfig.iconImgPrefix + 'tongxunlu.png'"></u--image>
+							<wd-img class="menuListIcon" :src="xiaoxizhongxin"></wd-img>
 							<view class="menuTitle">通讯录</view>
 						</view>
-					</view> -->
+					</view>  
           <view class="list-cell list-cell-arrow" @click="handleToEditInfo">
             <view class="menu-item-box">
-              <!-- <view class="iconfont icon-edit menu-icon"></view> -->
+              <view class="iconfont icon-edit menu-icon"></view> 
               <!-- <u--image
                 class="menuListIcon"
                 :src="globalConfig.iconImgPrefix + 'xiugaiziliao.png'"
@@ -90,7 +90,7 @@
           </view>
           <view class="list-cell list-cell-arrow" @click="handleToPwd">
             <view class="menu-item-box">
-              <!-- <view class="iconfont icon-password menu-icon"></view> -->
+           <view class="iconfont icon-password menu-icon"></view> 
               <!-- <u--image
                 class="menuListIcon pwIcon"
                 :src="globalConfig.iconImgPrefix + 'xiugaimima.png'"
@@ -110,7 +110,7 @@
           </view>
           <view class="list-cell list-cell-arrow" @click="handleAbout">
             <view class="menu-item-box">
-              <view class="iconfont icon-aixin menu-icon"></view>
+              <view class="iconfont icon-chat"></view>
               <view>关于我们</view>
             </view>
           </view>
@@ -140,6 +140,7 @@
 import { ref } from "vue";
 import { useUserStore } from '../../store/user'
 import {  logout } from "../../service/index/login";
+import xiaoxizhongxin from "@/static/images/xiaoxizhongxin.png"
 const userStore = useUserStore()
 
 const avatar = ref("");
@@ -191,7 +192,96 @@ const handleQuit = async () => {
  .action-btn {
       margin-top: 80rpx;
       .customBtn {
-        background: #AA001E !important;
+        background:uni-color-primary !important;
       }
     }
+  /*我的样式开始*/
+.mine-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	.header-section {
+		.top-box {
+			margin-bottom: 52rpx;
+			.title-box {
+				display: flex;
+				align-items: center;
+				margin-top: 108rpx;
+				margin-left: 60rpx;
+				.avatarImg {
+					width: 128rpx;
+					height: 128rpx;
+					border-radius: 50%;
+					box-shadow: 0px 0px 20px 0px rgba(0, 0, 1, 0.3);
+					background: #fff;
+				}
+				.login-tip,
+				.user-info {
+					color: #fff;
+					margin-left: 46rpx;
+				}
+				.u_title {
+					font-size: 20px;
+					line-height: 20px;
+				}
+				.sub_title {
+					margin-top: 9px;
+					font-size: $uni-font-size-base;
+					line-height: $uni-font-size-base;
+					color: #ccc;
+				}
+			}
+		}
+		.woker-list {
+			display: flex;
+			padding: 0 60rpx;
+			margin-bottom: 14rpx;
+			.woker-list-item {
+				flex: 1;
+				display: flex;
+				justify-content: space-between;
+				font-size: $uni-font-size-base;
+				color: $uni-text-color-grey;
+				line-height: $uni-font-size-base;
+				&:last-child {
+					justify-content: flex-end;
+				}
+				.woker-list__name {
+					margin-right: 32rpx;
+				}
+				.decollator {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
+	.content-section {
+		.menu-list {
+			margin: 40rpx 0;
+			.list-cell {
+				display: flex;
+				&:last-child {
+					&::after {
+						height: 0;
+					}
+				}
+				.menu-item-box {
+					.pwIcon {
+						.u-image {
+							height: 51rpx !important;
+							.u-image__image {
+								height: 51rpx !important;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.customBtn {
+		margin: 92rpx 24rpx 0 24rpx;
+		width: calc(100% - 48rpx) !important;
+	}
+}
 </style>

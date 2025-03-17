@@ -16,7 +16,7 @@
       safeAreaInsetTop
     >
       <template #title>
-        <wd-text text="今世缘综合管理平台" color="#FFFFFF"></wd-text>
+        <wd-text text="今世缘综合管理平台" color="#FFFFFF" size="16px"></wd-text>
       </template>
       <template #right>
         <wd-icon name="notification" size="18px"></wd-icon>
@@ -26,14 +26,6 @@
       </template>
     </wd-navbar>
     <uv-swiper :list="swiperList" radius="0" height="225"></uv-swiper>
-    <!-- <wd-swiper
-      :list="swiperList"
-      autoplay
-      v-model:current="current"
-      @click="handleClick"
-      @change="onChange"
-    >
-    </wd-swiper> -->
     <wd-notice-bar
       background-color="#F7F7F7"
       color="#999999"
@@ -92,10 +84,11 @@ import PLATFORM from "@/utils/platform";
 import wofaqide from "@/static/images/wofaqide.png";
 import tuihuoliebiao from "@/static/images/tuihuoliebiao.png";
 import gongyingjilu from "@/static/images/gongyingjilu.png";
+import { useUserStore } from '../../store/user'
 defineOptions({
   name: "Home",
 });
-
+const userStore = useUserStore()
 const current = ref(0);
 const handleClick = () => {
   console.log("点击了轮播图");
@@ -179,7 +172,7 @@ const indexCardList = ref([
 ]);
 const handlerGridItemClick = (item: any) => {
   console.log("-22-", item);
-  goDetailPage(item.path);
+  goDetailPage(item.path+`?title=${item.title}`);
 };
 const goDetailPage = (path: string) => {
   const url = `/${path}`;
@@ -187,11 +180,17 @@ const goDetailPage = (path: string) => {
     url,
   });
 };
+const _getAppRouters = () => {
+  userStore.getAppRouters();
+  console.log("userStore.appRouters")
+};
 // 测试 uni API 自动引入
 onLoad(() => {
   console.log(author);
   console.log(TestEnum.A);
   console.log(`当前平台是:${PLATFORM.platform}`);
+  _getAppRouters();
+  // userStore.getAppRouters();
 });
 </script>
 
