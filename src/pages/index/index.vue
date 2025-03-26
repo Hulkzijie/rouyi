@@ -138,9 +138,10 @@ const indexCardList = ref([
         icon: wofaqide,
       },
       {
-        title: "作业记录",
+        title: "地图",
         count: "3", // 属性名修改为 count
         icon: tuihuoliebiao,
+        path: "pages/map/index",
       },
       {
         title: "我的告警",
