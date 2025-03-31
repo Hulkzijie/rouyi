@@ -71,14 +71,6 @@
       }
     },
     {
-      "path": "pages/map/index",
-      "type": "page",
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTitleText": "地图"
-      }
-    },
-    {
       "path": "pages/mine/mine",
       "type": "page",
       "style": {
