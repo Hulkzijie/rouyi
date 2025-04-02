@@ -11,7 +11,7 @@ export type CustomRequestOptions = UniApp.RequestOptions & {
 
 // 请求基准地址
 const baseUrl = getEnvBaseUrl()
-
+console.log("--baseUrl--",baseUrl)
 // 拦截器配置
 const httpInterceptor = {
   // 拦截前触发
@@ -50,6 +50,10 @@ const httpInterceptor = {
     }
     // 3. 添加 token 请求头标识
     const token= getToken()
+    console.log("--token--",token)
+    // 4. 非登录接口，添加token请求头，实现鉴权，保证接口只能被授权用户调用
+    // 登录接口不需要携带token
+    // 注意：如果你的登录接口不需要携带token，那么你需要在登录接口处删除下面这行代码    
     if (token) {
       options.header.Authorization = 'Bearer ' + getToken();
     }
