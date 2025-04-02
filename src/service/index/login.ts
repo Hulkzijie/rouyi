@@ -67,4 +67,23 @@ export const getRouters = () => {
     method: "GET",
   });
 };
+// app验证码登录
+export function getVerification(data) {
+  return http({
+    url: "/getAppSmsCode",
+    method: "GET",
+    data: data
+  });
+}
+// 获取验证码
+export function getCodeImg() {
+  return http({
+    'url': '/captchaImage',
+    header: {
+      isToken: false
+    },
+    method: 'GET',
+    timeout: 20000
+  })
+}
 

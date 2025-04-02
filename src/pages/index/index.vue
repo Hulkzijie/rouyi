@@ -7,13 +7,13 @@
   },
 }
 </route>
-<template>
+<template> 
   <view class="h-100vh bg-#F7F7F7 mt-44px p-0">
     <wd-navbar
       fixed
       custom-style="background-color: #AA001E !important;color:#FFFFFF"
       left-arrow
-      safeAreaInsetTop
+      
     >
       <template #title>
         <wd-text text="今世缘综合管理平台" color="#FFFFFF" size="16px"></wd-text>
@@ -25,7 +25,7 @@
         <wd-icon name="calendar" size="18px"></wd-icon>
       </template>
     </wd-navbar>
-    <uv-swiper :list="swiperList" radius="0" height="225"></uv-swiper>
+    <uv-swiper :list="swiperList" radius="0" height="225" class="mt-44px"></uv-swiper>
     <wd-notice-bar
       background-color="#F7F7F7"
       color="#999999"
@@ -88,6 +88,7 @@ import { useUserStore } from '../../store/user'
 defineOptions({
   name: "Home",
 });
+
 const userStore = useUserStore()
 const current = ref(0);
 const handleClick = () => {
@@ -134,7 +135,7 @@ const indexCardList = ref([
       {
         title: "预约列表",
         count: "1", // 属性名修改为 count/static/images/
-        path: "pages/car/productionvehicles/index",
+        path: "pages-sub/car/productionvehicles/index",
         icon: wofaqide,
       },
       {
@@ -171,15 +172,18 @@ const indexCardList = ref([
     ],
   },
 ]);
+const router = useRouter();
 const handlerGridItemClick = (item: any) => {
   console.log("-22-", item);
   goDetailPage(item.path+`?title=${item.title}`);
 };
 const goDetailPage = (path: string) => {
   const url = `/${path}`;
-  uni.navigateTo({
-    url,
-  });
+  console.log("url",url)
+  // uni.navigateTo({
+  //   url,
+  // });
+  router.push({ path: `${url}` });
 };
 const _getAppRouters = () => {
   userStore.getAppRouters();

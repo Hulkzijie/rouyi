@@ -6,7 +6,7 @@ import {
   removeToken,
 } from "@/utils/cache";
 import { deepTransformMenuData } from "@/utils/formart";
-import { logout as _logout,handlerLoginUser,getInfo,getRouters} from "@/service/index/login";
+import { logout as _logout, handlerLoginUser, getInfo, getRouters } from "@/service/index/login";
 type UserInfo = {
   id: string;
   name: string;
@@ -29,25 +29,24 @@ export const useUserStore = defineStore(
     const isLoggedIn = computed(() => Boolean(token.value));
     // Actions
     const getUserInfo = async () => {
-     const res = await getInfo()
-     if(res.code === 200){
-      roles.value = res.data.roles
-      avatar.value = res.data.user.avatar
-      user.value =res.data.user
-      permissions.value = res.data.permissions
-     }else {
-      console.error("getInfo")
-     }
+      const res = await getInfo()
+      if (res.code === 200) {
+        roles.value = res.data.roles
+        avatar.value = res.data.user.avatar
+        user.value = res.data.user
+        permissions.value = res.data.permissions
+      } else {
+        console.error("getInfo")
+      }
 
     }
-    const getAppRouters = async () =>{
-     const res = await getRouters()
-     console.log("getRouters",res)
-     routerMap.value = res.data
-    //  routerMap.value = deepTransformMenuData(res.data)
-     console.log("routerMap",routerMap.value )
+    const getAppRouters = async () => {
+      const res = await getRouters()
+      routerMap.value = res.data
+      //  routerMap.value = deepTransformMenuData(res.data)
+      console.log("routerMap", routerMap.value)
 
-      
+
     }
     const setUserInfo = (info: UserInfo) => {
       id.value = info.id;
@@ -55,22 +54,22 @@ export const useUserStore = defineStore(
       avatar.value = info.avatar;
       roles.value = info.roles;
     };
-    const loginSuccess = async (data:any) =>{
-      try{
-      const res = await handlerLoginUser(data)
-      if(res.code ==200){
-        setToken(res.data.token)
-        getUserInfo() //
-        getAppRouters()//
-        uni.showToast({
-                icon: 'none',
-                title:'登录成功',
-        })
-        uni.switchTab({
-          url: '/pages/index/index'
-        })
-       }
-      }catch{
+    const loginSuccess = async (data: any) => {
+      try {
+        const res = await handlerLoginUser(data)
+        if (res.code == 200) {
+          setToken(res.data.token)
+          getUserInfo() //
+          getAppRouters()//
+          uni.showToast({
+            icon: 'none',
+            title: '登录成功',
+          })
+          uni.switchTab({
+            url: '/pages/index/index'
+          })
+        }
+      } catch {
         console.error("user")
       }
     }
@@ -87,7 +86,7 @@ export const useUserStore = defineStore(
           uni.navigateTo({
             url: '/pages/login/index'
           })
-        }else {
+        } else {
           uni.showToast({
             icon: 'none',
             title: res.msg,
@@ -103,7 +102,7 @@ export const useUserStore = defineStore(
       _setToken(value);
       token.value = value;
     };
-    
+
     return {
       setToken,
       isLoggedIn,
