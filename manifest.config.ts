@@ -21,11 +21,11 @@ export default defineManifestConfig({
   versionCode: '100',
   transformPx: false,
   locale: VITE_FALLBACK_LOCALE, // 'zh-Hans'
-  h5: {
-    router: {
-      base: VITE_APP_PUBLIC_BASE,
-    },
-  },
+  // h5: {
+  //   router: {
+  //     base: VITE_APP_PUBLIC_BASE,
+  //   },
+  // },
   /* 5+App特有相关 */
   'app-plus': {
     usingComponents: true,

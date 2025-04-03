@@ -102,10 +102,5 @@
   "uniStatistics": {
     "enable": false
   },
-  "vueVersion": "3",
-  "h5": {
-    "router": {
-      "base": "ztf-zixun/jsyp-frontend-h5/dev/"
-    }
-  }
+  "vueVersion": "3"
 }

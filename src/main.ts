@@ -14,8 +14,9 @@ export function createApp() {
   const app = createSSRApp(App)
   app.use(store)
   // app.use(routeInterceptor)
-  app.use(router);
   app.use(routeInterceptor);
+  app.use(router);
+
   app.use(requestInterceptor)
   app.use(prototypeInterceptor)
   app.use(VueQueryPlugin)
