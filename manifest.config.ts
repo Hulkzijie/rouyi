@@ -21,11 +21,7 @@ export default defineManifestConfig({
   versionCode: '100',
   transformPx: false,
   locale: VITE_FALLBACK_LOCALE, // 'zh-Hans'
-  // h5: {
-  //   router: {
-  //     base: VITE_APP_PUBLIC_BASE,
-  //   },
-  // },
+
   /* 5+App特有相关 */
   'app-plus': {
     usingComponents: true,
@@ -126,6 +122,20 @@ export default defineManifestConfig({
   },
   'mp-toutiao': {
     usingComponents: true,
+  },
+  h5: {
+    router: {
+      base: VITE_APP_PUBLIC_BASE,
+    },
+    sdkConfigs: {
+      maps: {
+        amap: {
+          key: '21f194a0d33197f874f7bbdd198419be',
+          securityJsCode: 'a46b425f31a4de445b2966d998fba851',
+          serviceHost: '',
+        },
+      },
+    },
   },
   uniStatistics: {
     enable: false,

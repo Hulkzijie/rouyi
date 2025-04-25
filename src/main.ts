@@ -7,6 +7,7 @@ import App from './App.vue'
 import { prototypeInterceptor, requestInterceptor, routeInterceptor } from './interceptors'
 import store from './store'
 import router from './router'
+console.log('环境变量VITE_APP_PROXY:', __VITE_APP_PROXY__);
 export function createApp() {
   const app = createSSRApp(App)
   app.use(store)

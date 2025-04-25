@@ -102,5 +102,19 @@
   "uniStatistics": {
     "enable": false
   },
-  "vueVersion": "3"
+  "vueVersion": "3",
+  "h5": {
+    "router": {
+      "base": "/ztf-zixun/jsyp-backend/dev"
+    },
+    "sdkConfigs": {
+      "maps": {
+        "amap": {
+          "key": "21f194a0d33197f874f7bbdd198419be",
+          "securityJsCode": "a46b425f31a4de445b2966d998fba851",
+          "serviceHost": ""
+        }
+      }
+    }
+  }
 }

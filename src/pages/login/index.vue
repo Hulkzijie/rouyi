@@ -27,7 +27,7 @@
           maxlength="30"
         />
       </view>
-      <view class="input-item flex align-center">
+      <!-- <view class="input-item flex align-center">
         <view class="iconfont icon-password icon"></view>
         <input
           v-model="loginForm.password"
@@ -36,22 +36,30 @@
           placeholder="请输入密码"
           maxlength="20"
         />
-      </view>
+      </view> -->
      <view
         class="input-item flex align-center"
         style="width: 60%; margin: 0px"
-        v-if="captchaEnabled"
+        v-if="true"
       >
         <view class="iconfont icon-code icon"></view>
-        <input
+         <input
           v-model="loginForm.code"
           type="number"
           class="input"
           placeholder="请输入验证码"
           maxlength="4"
-        />
+        /> 
         <view class="login-code">
-          <image :src="codeUrl" @click="getCode" class="login-code-img"></image>
+          <!-- <image :src="codeUrl" @click="getCode" class="login-code-img"></image> -->
+           <wd-button
+            size="large"
+            block
+            @click="getCode"
+            custom-class="customBtn"
+          >
+            获取验证码
+          </wd-button>
         </view>
       </view> 
       <view class="action-btn">
@@ -83,7 +91,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useUserStore } from '@/store/user'
-import { getCodeImg} from '@/service/app/login'
+// 从统一入口导入
+import { login, logout, getVerification, } from '@/api';
 const userStore = useUserStore()
 const uToast = ref()
 
@@ -108,11 +117,14 @@ const checkboxValue1 = ref([])
 
 // 获取验证码
 const getCode = async () => {
-  const res = await getCodeImg({})
+  const params = {
+    phonenumber: loginForm.value.username
+  }
+  const res = await getVerification(params)
   if (res) {
     console.log('res',res)
-    codeUrl.value = 'data:image/gif;base64,' + res.data.img
-    loginForm.value.uuid = res.data.uuid
+    // codeUrl.value = 'data:image/gif;base64,' + res.data.img
+    // loginForm.value.uuid = res.data.uuid
   }
 }
 
