@@ -1,16 +1,49 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
-// import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only'
+import {onLaunch, onShow, onHide} from "@dcloudio/uni-app";
+import "abortcontroller-polyfill/dist/abortcontroller-polyfill-only";
+import { beforEach } from "@/router/index";
 
-onLaunch(() => {
-  console.log('App Launch')
+// 定义全局数据
+const globalData = {
+  isLocalConfig: true,
+  systemInfo: uni.getSystemInfoSync(),
+  navHeight: 44,
+};
+
+// 应用生命周期
+onLaunch((options) => {
+  console.log("App Launch");
+  console.log("应用启动路径：", options.path);
 })
-onShow(() => {
-  console.log('App Show')
+
+onShow((options) => {
+  console.log("App Show");
+  console.log("应用启动路径：", options.path);
+  // 首次进入页面时路由拦截
+  setTimeout(() => {
+    const currentPage = options.path;
+    beforEach(
+      { path: "/" },
+      { path: currentPage, fullPath: currentPage },
+      (data: { path: any; }) => {
+        if (data?.path) {
+          uni.redirectTo({ url: data.path });
+        }
+      }
+    );
+  }, 100);
 })
+
 onHide(() => {
-  console.log('App Hide')
+  console.log("App Hide");
 })
+
+// 将globalData暴露给全局
+uni.getApp = () => {
+  return {
+    globalData
+  };
+};
 </script>
 
 <style lang="scss">
@@ -56,8 +89,8 @@ image {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-// 修改进度条颜色 
+// 修改进度条颜色
 #nprogress .bar {
-  background: #AA001E;
+  background: #aa001e;
 }
 </style>

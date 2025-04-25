@@ -172,7 +172,7 @@ const indexCardList = ref([
     ],
   },
 ]);
-const router = useRouter();
+// const router = useRouter();
 const handlerGridItemClick = (item: any) => {
   console.log("-22-", item);
   goDetailPage(item.path+`?title=${item.title}`);
@@ -183,7 +183,7 @@ const goDetailPage = (path: string) => {
   // uni.navigateTo({
   //   url,
   // });
-  router.push({ path: `${url}` });
+  // router.push({ path: `${url}` });
 };
 const _getAppRouters = () => {
   userStore.getAppRouters();

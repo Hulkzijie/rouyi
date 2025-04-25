@@ -55,6 +55,14 @@
       }
     },
     {
+      "path": "pages/login/index",
+      "type": "page",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
       "path": "pages/mine/mine",
       "type": "page",
       "style": {
@@ -88,14 +96,6 @@
           "type": "page",
           "style": {
             "navigationBarTitleText": "分包页面 标题"
-          }
-        },
-        {
-          "path": "login/index",
-          "type": "page",
-          "style": {
-            "navigationStyle": "custom",
-            "navigationBarTitleText": "登录"
           }
         },
         {

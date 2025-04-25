@@ -5,11 +5,11 @@
 
 interface NavigateToOptions {
   url: "/pages/index/index" |
+       "/pages/login/index" |
        "/pages/mine/mine" |
        "/pages/work/work" |
        "/pages-sub/about/about" |
        "/pages-sub/demo/index" |
-       "/pages-sub/login/index" |
        "/pages-sub/car/productionvehicles/index";
 }
 interface RedirectToOptions extends NavigateToOptions {}

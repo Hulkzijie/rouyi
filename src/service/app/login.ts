@@ -17,7 +17,6 @@ export async function getCodeImg({
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-
     ...(options || {}),
   });
 }

@@ -27,6 +27,7 @@ export const useUserStore = defineStore(
     const routerMap = ref([]);
     // Getters
     const isLoggedIn = computed(() => Boolean(token.value));
+  
     // Actions
     const getUserInfo = async () => {
       const res = await getInfo()
