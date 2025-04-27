@@ -1,13 +1,13 @@
 <route lang="json5">
-    {
-      style: {
-        navigationStyle: 'custom',
-        navigationBarTitleText: '登录',
-      },
-    }
-    </route>
+{
+  style: {
+    navigationStyle: "custom",
+    navigationBarTitleText: "登录",
+  },
+}
+</route>
 <template>
- <view class="normal-login-container">
+  <view class="normal-login-container">
     <view class="logo-content align-center justify-center flex">
       <!-- <image
         style="width: 100rpx; height: 100rpx"
@@ -20,7 +20,7 @@
       <view class="input-item flex align-center">
         <view class="iconfont icon-user icon"></view>
         <input
-          v-model="loginForm.username"
+          v-model="loginForm.phonenumber"
           class="input"
           type="text"
           placeholder="请输入账号"
@@ -37,22 +37,22 @@
           maxlength="20"
         />
       </view> -->
-     <view
+      <view
         class="input-item flex align-center"
-        style="width: 60%; margin: 0px"
+       
         v-if="true"
       >
         <view class="iconfont icon-code icon"></view>
-         <input
-          v-model="loginForm.code"
+        <input
+          v-model="loginForm.smsCode"
           type="number"
           class="input"
           placeholder="请输入验证码"
-          maxlength="4"
-        /> 
+          maxlength="6"
+        />
         <view class="login-code">
           <!-- <image :src="codeUrl" @click="getCode" class="login-code-img"></image> -->
-           <wd-button
+          <wd-button
             size="large"
             block
             @click="getCode"
@@ -61,9 +61,15 @@
             获取验证码
           </wd-button>
         </view>
-      </view> 
+      </view>
       <view class="action-btn">
-        <wd-button  size="large" block @click="handleLogin" custom-class="customBtn">登录</wd-button>
+        <wd-button
+          size="large"
+          block
+          @click="handleLogin"
+          custom-class="customBtn"
+          >登录</wd-button
+        >
       </view>
       <view class="reg text-center" v-if="register">
         <text class="text-grey1">没有账号？</text>
@@ -84,97 +90,96 @@
         <text @click="handlePrivacy" class="text-blue">《隐私政策》</text>
       </view>
     </view>
-    <!-- <u-toast ref="uToast"></u-toast> -->
+    <!-- <wd-toast ref="uToast"></u-toast> -->
   </view>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useUserStore } from '@/store/user'
-// 从统一入口导入
-import { login, logout, getVerification, } from '@/api';
-const userStore = useUserStore()
-const uToast = ref()
+import { ref } from "vue";
+import { useUserStore } from "@/store/user";
+import { getVerification } from "@/service/index/login";
+const userStore = useUserStore();
+const uToast = ref();
 
 // 表单数据
 const loginForm = ref({
-  username: '13866941131',
-  password: 'Cicdi@123456',
-  code: '',
-  uuid: ''
-})
+  phonenumber: "13866941131",
+  smsCode: "",
+});
 
-""
+("");
 // 验证码开关
-const captchaEnabled = ref(false)
+const captchaEnabled = ref(false);
 // 注册开关
-const register = ref(false)
+const register = ref(false);
 // 验证码图片
-const codeUrl = ref('')
+const codeUrl = ref("");
 // 协议勾选
-const isAgreement = ref(false)
-const checkboxValue1 = ref([])
+const isAgreement = ref(false);
+const checkboxValue1 = ref([]);
 
 // 获取验证码
 const getCode = async () => {
   const params = {
-    phonenumber: loginForm.value.username
-  }
-  const res = await getVerification(params)
+    phonenumber: loginForm.value.phonenumber,
+  };
+  const res = await getVerification(params);
   if (res) {
-    console.log('res',res)
+    console.log("res", res);
     // codeUrl.value = 'data:image/gif;base64,' + res.data.img
-    // loginForm.value.uuid = res.data.uuid
+    loginForm.value.smsCode = res.data.sendSmsCode
   }
-}
+};
 
 // 协议勾选变更
 const changeAgreement = (e: any) => {
-  isAgreement.value = e.length > 0
-}
+  isAgreement.value = e.length > 0;
+};
 
 // 处理登录
 const handleLogin = async () => {
   try {
-    userStore.loginSuccess(loginForm.value)
-
+    userStore.loginSuccess(loginForm.value);
   } catch (error: any) {
     if (captchaEnabled.value) {
-      getCode()
+      // getCode();
     }
-    // uToast.value.show({ type: 'error', message: error.msg || '登录失败' })
+    uToast.value.show({ type: 'error', message: error.msg || '登录失败' })
   }
-}
+};
 
 // 处理注册
 const handleUserRegister = () => {
   uni.navigateTo({
-    url: '/pages/register/index'
-  })
-}
+    url: "/pages/register/index",
+  });
+};
 
 // 处理用户协议
 const handleUserAgrement = () => {
   uni.navigateTo({
-    url: '/pages/agreement/user'
-  })
-}
+    url: "/pages/agreement/user",
+  });
+};
 
 // 处理隐私政策
 const handlePrivacy = () => {
   uni.navigateTo({
-    url: '/pages/agreement/privacy'
-  })
-}
+    url: "/pages/agreement/privacy",
+  });
+};
 
-// 初始化获取验证码
-getCode()
+// // 初始化获取验证码
+// getCode();
 </script>
 <style lang="scss" scoped>
 .page-class {
   :deep() {
     .custom-shadow {
-      box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+      box-shadow:
+        0 3px 1px -2px rgb(0 0 0 / 20%),
+        0 2px 2px 0 rgb(0 0 0 / 14%),
+        0 1px 5px 0 rgb(0 0 0 / 12%);
     }
   }
 }
@@ -223,7 +228,7 @@ getCode()
     .action-btn {
       margin-top: 80rpx;
       .customBtn {
-        background: #AA001E !important;
+        background: #aa001e !important;
       }
     }
 
@@ -233,23 +238,23 @@ getCode()
         color: #999;
       }
       .text-blue {
-        color: #AA001E;
+        color: #aa001e;
       }
     }
 
     .xieyi {
       margin-top: 40rpx;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
       .text-grey1 {
         color: #999;
       }
       .text-blue {
-        color: #AA001E;
+        color: #aa001e;
       }
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
+
     }
   }
 }
 </style>
-

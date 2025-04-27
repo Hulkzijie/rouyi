@@ -39,7 +39,7 @@ export const getList = (page = 1, pageSize = 10) => {
 //---------登录------------------------------------------
 export const handlerLoginUser = (data: any) => {
   return http<any>({
-    url: "/appLogin",
+    url: "/appSmsLogin",
     method: "POST",
     data: data,
   });
@@ -63,16 +63,18 @@ export const getInfo = () => {
 export const getRouters = () => {
   console.log("getRouters");
   return http<any>({
-    url: "getRouters?type=app",
+    url: "/getRouters?type=app",
     method: "GET",
   });
 };
 // app验证码登录
-export function getVerification(data) {
+export function getVerification(data: any) {
+  const queryString = Object.keys(data)
+  .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+  .join('&');
   return http({
-    url: "/getAppSmsCode",
-    method: "GET",
-    data: data
+    url:  `/getAppSmsCode?${queryString}`,
+    method: "POST",
   });
 }
 // 获取验证码
@@ -86,4 +88,6 @@ export function getCodeImg() {
     timeout: 20000
   })
 }
+
+
 

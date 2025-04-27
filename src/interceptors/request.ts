@@ -3,6 +3,7 @@ import qs from 'qs'
 import { platform } from '@/utils/platform'
 import { getEnvBaseUrl } from '@/utils'
 import {getToken}from '@/utils/cache'
+
 export type CustomRequestOptions = UniApp.RequestOptions & {
   query?: Record<string, any>
   /** 出错时是否隐藏错误提示 */
@@ -30,8 +31,12 @@ const httpInterceptor = {
       // #ifdef H5
       // console.log(__VITE_APP_PROXY__)
       if (JSON.parse(__VITE_APP_PROXY__)) {
-        // 啥都不需要做
-        // options.url = baseUrl +'/ztf-zixun/jsyp-backend/dev'+ options.url
+        // 啥都不需要做  
+        options.url = baseUrl +'/ztf-zixun/jsyp-backend/dev'+ options.url
+        // 上面带有url是没有的 
+     
+ 
+        
       } else {
         options.url = baseUrl + options.url
       }

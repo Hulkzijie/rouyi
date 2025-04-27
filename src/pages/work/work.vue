@@ -50,6 +50,8 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from '@/plugin/uni-mini-router'
+const router = useRouter()
 const goBack = () => {
   uni.navigateBack();
 };
@@ -65,10 +67,13 @@ const handlerGridItemClick = (item: any) => {
 };
 const goDetailPage = (path: string) => {
   const url = `/${path}`;
-  uni.navigateTo({
-    url,
-  });
+  router.push({ path: 'pages-sub/car/productionvehicles/index' })
+  console.log("url1122", url);
+  // uni.navigateTo({
+  //   url,
+  // });
 };
+
 const menuList = userStore.routerMap;
 // 配置映射（结合之前优化的路径管理）
 const ICON_BASE_PATH = '/static/images/'
